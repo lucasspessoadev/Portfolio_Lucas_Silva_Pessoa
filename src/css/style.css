@@ -8,24 +8,27 @@
   --bg-primary: #f8fafc;
   --bg-surface: rgba(255, 255, 255, 0.94);
   --bg-surface-hover: #ffffff;
-  --bg-card: rgba(255, 255, 255, 0.90);
-  --bg-card-border: rgba(226, 232, 240, 0.8);
-  --glass-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
-  --glass-shadow-hover: 0 18px 40px -10px rgba(14, 165, 233, 0.16);
+  --bg-card: rgba(255, 255, 255, 0.92);
+  --bg-card-border: rgba(203, 213, 225, 0.85);
+  --glass-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.14), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --glass-shadow-hover: 0 18px 40px -10px rgba(14, 165, 233, 0.22);
 
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-muted: #64748b;
+  --text-primary: #090d16;
+  --text-secondary: #1e293b;
+  --text-muted: #475569;
   --text-inverse: #ffffff;
 
   --accent-primary: #0284c7;
-  --accent-secondary: #f59e0b;
-  --accent-gradient: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
-  --accent-glow: rgba(56, 189, 248, 0.25);
+  --accent-secondary: #d97706;
+  --accent-gradient: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%);
+  --accent-glow: rgba(2, 132, 199, 0.3);
 
-  --nav-bg: rgba(255, 255, 255, 0.45);
-  --nav-border: rgba(255, 255, 255, 0.3);
-  --nav-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
+  --title-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 255, 255, 0.7);
+  --text-shadow-sm: 0 1px 2px rgba(255, 255, 255, 0.85);
+
+  --nav-bg: rgba(255, 255, 255, 0.88);
+  --nav-border: rgba(203, 213, 225, 0.8);
+  --nav-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
 
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-heading: 'Space Grotesk', system-ui, sans-serif;
@@ -44,23 +47,26 @@ body.theme-night {
   --bg-surface: rgba(15, 23, 42, 0.92);
   --bg-surface-hover: rgba(30, 41, 59, 0.95);
   --bg-card: rgba(15, 23, 42, 0.88);
-  --bg-card-border: rgba(255, 255, 255, 0.1);
+  --bg-card-border: rgba(255, 255, 255, 0.15);
   --glass-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(255, 255, 255, 0.05);
   --glass-shadow-hover: 0 18px 40px -10px rgba(99, 102, 241, 0.25);
 
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
   --text-muted: #94a3b8;
   --text-inverse: #0f172a;
 
   --accent-primary: #818cf8;
   --accent-secondary: #38bdf8;
   --accent-gradient: linear-gradient(135deg, #6366f1 0%, #38bdf8 100%);
-  --accent-glow: rgba(99, 102, 241, 0.3);
+  --accent-glow: rgba(99, 102, 241, 0.35);
 
-  --nav-bg: rgba(15, 23, 42, 0.45);
+  --title-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+  --text-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.7);
+
+  --nav-bg: rgba(15, 23, 42, 0.88);
   --nav-border: rgba(255, 255, 255, 0.15);
-  --nav-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
+  --nav-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
 }
 
 /* SUNSET THEME VARIABLES */
@@ -69,21 +75,24 @@ body.theme-sunset {
   --bg-surface: rgba(35, 18, 50, 0.92);
   --bg-surface-hover: rgba(55, 25, 78, 0.95);
   --bg-card: rgba(35, 18, 50, 0.88);
-  --bg-card-border: rgba(251, 146, 60, 0.2);
+  --bg-card-border: rgba(251, 146, 60, 0.25);
   --glass-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
   --glass-shadow-hover: 0 18px 40px -10px rgba(249, 115, 22, 0.3);
 
-  --text-primary: #fff7ed;
-  --text-secondary: #fed7aa;
-  --text-muted: #fba985;
+  --text-primary: #ffffff;
+  --text-secondary: #ffedd5;
+  --text-muted: #fed7aa;
   --text-inverse: #1e1b4b;
 
   --accent-primary: #fb923c;
   --accent-secondary: #f43f5e;
   --accent-gradient: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
-  --accent-glow: rgba(249, 115, 22, 0.3);
+  --accent-glow: rgba(249, 115, 22, 0.35);
 
-  --nav-bg: rgba(35, 18, 50, 0.45);
+  --title-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+  --text-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.7);
+
+  --nav-bg: rgba(35, 18, 50, 0.88);
   --nav-border: rgba(251, 146, 60, 0.25);
 }
 
@@ -93,21 +102,24 @@ body.theme-sunrise {
   --bg-surface: rgba(30, 41, 59, 0.92);
   --bg-surface-hover: rgba(51, 65, 85, 0.95);
   --bg-card: rgba(30, 41, 59, 0.88);
-  --bg-card-border: rgba(244, 114, 182, 0.2);
+  --bg-card-border: rgba(244, 114, 182, 0.25);
   --glass-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
   --glass-shadow-hover: 0 18px 40px -10px rgba(244, 114, 182, 0.3);
 
-  --text-primary: #fdf2f8;
+  --text-primary: #ffffff;
   --text-secondary: #fbcfe8;
   --text-muted: #f472b6;
   --text-inverse: #0f172a;
 
   --accent-primary: #f472b6;
   --accent-secondary: #fed7aa;
-  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #f472b6 100%);
-  --accent-glow: rgba(244, 114, 182, 0.3);
+  --accent-gradient: linear-gradient(135deg, #a855f7 0%, #f472b6 100%);
+  --accent-glow: rgba(244, 114, 182, 0.35);
 
-  --nav-bg: rgba(15, 23, 42, 0.45);
+  --title-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+  --text-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.7);
+
+  --nav-bg: rgba(15, 23, 42, 0.88);
   --nav-border: rgba(244, 114, 182, 0.25);
 }
 
@@ -154,12 +166,14 @@ svg {
   max-width: 100%;
 }
 
-/* ================= ULTRA-CLEAN CARDS (NO HEAVY BACKDROP-FILTER) ================= */
+/* ================= ULTRA-CLEAN CARDS WITH FROSTED BACKDROP ================= */
 .glass-panel {
   background: var(--bg-card);
   border: 1px solid var(--bg-card-border);
   box-shadow: var(--glass-shadow);
   border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
@@ -174,6 +188,13 @@ svg {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   display: inline-block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.18));
+}
+
+body.theme-night .gradient-text,
+body.theme-sunset .gradient-text,
+body.theme-sunrise .gradient-text {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
 }
 
 .section-padding {
@@ -232,6 +253,8 @@ svg {
 .section-header {
   text-align: center;
   margin-bottom: 44px;
+  position: relative;
+  z-index: 2;
 }
 
 .section-subtitle {
@@ -243,27 +266,33 @@ svg {
   letter-spacing: 1.2px;
   text-transform: uppercase;
   color: var(--accent-primary);
-  margin-bottom: 10px;
-  background: rgba(2, 132, 199, 0.08);
-  padding: 5px 14px;
+  margin-bottom: 12px;
+  background: var(--bg-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 6px 16px;
   border-radius: 999px;
   border: 1px solid var(--bg-card-border);
+  box-shadow: var(--glass-shadow);
 }
 
 .section-title {
   font-family: var(--font-heading);
   font-size: clamp(1.85rem, 3.5vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.25;
   margin-bottom: 14px;
   color: var(--text-primary);
+  text-shadow: var(--title-shadow);
 }
 
 .section-desc {
   color: var(--text-secondary);
   font-size: 1.05rem;
-  max-width: 600px;
+  font-weight: 500;
+  max-width: 620px;
   margin: 0 auto;
+  text-shadow: var(--text-shadow-sm);
 }
 
 .section-line {
@@ -351,13 +380,18 @@ svg {
 
 .nav-link:hover,
 .nav-link.active {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.12);
+  color: var(--accent-primary);
+  background: rgba(2, 132, 199, 0.12);
 }
 
 body.theme-night .nav-link:hover,
-body.theme-night .nav-link.active {
-  background: rgba(255, 255, 255, 0.12);
+body.theme-night .nav-link.active,
+body.theme-sunset .nav-link:hover,
+body.theme-sunset .nav-link.active,
+body.theme-sunrise .nav-link:hover,
+body.theme-sunrise .nav-link.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.16);
 }
 
 /* ================= SKY TIME CONTROLLER IN HEADER ================= */
@@ -373,7 +407,7 @@ body.theme-night .nav-link.active {
   align-items: center;
   gap: 6px;
   padding: 5px 11px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-surface);
   border: 1px solid var(--bg-card-border);
   border-radius: 999px;
   font-size: 0.8rem;
@@ -381,6 +415,7 @@ body.theme-night .nav-link.active {
   color: var(--text-primary);
   cursor: pointer;
   white-space: nowrap;
+  backdrop-filter: blur(8px);
   transition: var(--transition-smooth);
 }
 
@@ -624,6 +659,8 @@ body.theme-night .theme-mode-buttons {
   font-weight: 600;
   color: var(--text-primary);
   text-align: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .badge-beacon {
@@ -645,6 +682,7 @@ body.theme-night .badge-beacon {
   letter-spacing: -0.5px;
   margin-bottom: 22px;
   color: var(--text-primary);
+  text-shadow: var(--title-shadow);
   text-align: center;
   width: 100%;
 }
@@ -652,10 +690,12 @@ body.theme-night .badge-beacon {
 .hero-description {
   font-size: clamp(1rem, 1.7vw, 1.15rem);
   color: var(--text-secondary);
+  font-weight: 500;
   max-width: 620px;
   line-height: 1.6;
   margin: 0 auto 34px;
   text-align: center;
+  text-shadow: var(--text-shadow-sm);
 }
 
 .hero-actions {

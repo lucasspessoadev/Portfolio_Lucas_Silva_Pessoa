@@ -1,16 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 
 export function About() {
-  const [isMuted, setIsMuted] = useState(true);
-  const videoRef = useRef(null);
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(videoRef.current.muted);
-    }
-  };
-
   return (
     <section id="about" className="section-padding about-section">
       <div className="section-container">
@@ -99,19 +89,10 @@ export function About() {
                 <span className="video-badge">
                   <i className="fa-solid fa-rocket"></i> Pitch Startup Entrennection (2023)
                 </span>
-                <button 
-                  className="sound-toggle-btn" 
-                  onClick={toggleMute}
-                  title={isMuted ? "Ativar som da apresentação" : "Mutar vídeo"}
-                >
-                  <i className={`fa-solid ${isMuted ? 'fa-volume-xmark' : 'fa-volume-high'}`}></i>
-                  <span>{isMuted ? 'Áudio Mudo' : 'Áudio Ativo'}</span>
-                </button>
               </div>
 
               <div className="video-player-wrapper">
                 <video 
-                  ref={videoRef}
                   src="/vid/YouCut_20231002_181705893.mp4" 
                   autoPlay 
                   loop 

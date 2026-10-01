@@ -1,0 +1,391 @@
+/* ==========================================================================
+   DYNAMIC CELESTIAL SKY ENGINE - CSS
+   Realistic Day, Sunset, Night, Sunrise, Sun & Moon Orbits, Volumetric Clouds
+   ========================================================================== */
+
+/* Sky Viewport Container (Fixed background behind all content) */
+.sky-viewport {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  transition: filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  contain: strict; /* isolate sky from page layout recalcs */
+}
+
+/* Sky Background Gradient Layer */
+.sky-gradient {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: background 1.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.5s ease;
+}
+
+/* Base Sky States (Day, Sunset/Dusk, Night, Sunrise/Dawn) */
+body.theme-day .sky-gradient {
+  background: radial-gradient(circle at 50% 20%, #e0f2fe 0%, #bae6fd 25%, #7dd3fc 50%, #38bdf8 80%, #0284c7 100%);
+}
+
+body.theme-sunset .sky-gradient {
+  background: linear-gradient(180deg, #1e1b4b 0%, #4c1d95 20%, #831843 45%, #be123c 65%, #f97316 85%, #fde047 100%);
+}
+
+body.theme-night .sky-gradient {
+  background: radial-gradient(ellipse at 50% 10%, #090d16 0%, #050811 40%, #020408 80%, #000205 100%);
+}
+
+body.theme-sunrise .sky-gradient {
+  background: linear-gradient(180deg, #0f172a 0%, #312e81 25%, #6366f1 55%, #f472b6 80%, #fed7aa 100%);
+}
+
+/* Stars Canvas for Twinkling and Shooting Stars */
+.stars-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+  pointer-events: none;
+}
+
+body.theme-night .stars-canvas {
+  opacity: 1;
+}
+
+body.theme-sunset .stars-canvas,
+body.theme-sunrise .stars-canvas {
+  opacity: 0.35;
+}
+
+/* ================= CELESTIAL ORBIT & BODIES ================= */
+.celestial-orbit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.celestial-body {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 1s ease;
+  will-change: left, top, opacity;
+}
+
+/* SUN ENTITY */
+.sun {
+  width: 140px;
+  height: 140px;
+  opacity: 1;
+  z-index: 4;
+}
+
+body.theme-night .sun {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sun-core {
+  position: absolute;
+  inset: 15px;
+  background: radial-gradient(circle, #ffffff 10%, #fffbeb 40%, #fef08a 65%, #f59e0b 95%, #ea580c 100%);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 45px rgba(253, 224, 71, 0.95),
+    0 0 90px rgba(245, 158, 11, 0.75),
+    0 0 160px rgba(234, 88, 12, 0.55);
+  animation: pulse-sun 6s ease-in-out infinite alternate;
+}
+
+.sun-corona {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(254, 240, 138, 0.35) 0%, rgba(245, 158, 11, 0.15) 60%, transparent 80%);
+  filter: blur(8px);
+  animation: rotate-corona 30s linear infinite;
+}
+
+.sun-rays {
+  position: absolute;
+  inset: -40px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.25) 0deg,
+    transparent 20deg,
+    rgba(254, 240, 138, 0.25) 45deg,
+    transparent 65deg,
+    rgba(255, 255, 255, 0.25) 90deg,
+    transparent 110deg,
+    rgba(254, 240, 138, 0.25) 135deg,
+    transparent 155deg,
+    rgba(255, 255, 255, 0.25) 180deg,
+    transparent 200deg,
+    rgba(254, 240, 138, 0.25) 225deg,
+    transparent 245deg,
+    rgba(255, 255, 255, 0.25) 270deg,
+    transparent 290deg,
+    rgba(254, 240, 138, 0.25) 315deg,
+    transparent 335deg,
+    rgba(255, 255, 255, 0.25) 360deg
+  );
+  filter: blur(14px);
+  animation: rotate-corona 45s linear infinite reverse;
+}
+
+.sun-flare {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: -130px;
+  left: -130px;
+  background: radial-gradient(circle, rgba(255, 237, 160, 0.2) 0%, rgba(255, 170, 50, 0.08) 40%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* MOON ENTITY */
+.moon {
+  width: 130px;
+  height: 130px;
+  opacity: 0;
+  z-index: 4;
+}
+
+body.theme-night .moon {
+  opacity: 1;
+}
+
+body.theme-sunset .moon,
+body.theme-sunrise .moon {
+  opacity: 0.5;
+}
+
+.moon-core {
+  position: absolute;
+  inset: 15px;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #f1f5f9 45%, #cbd5e1 75%, #94a3b8 100%);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 35px rgba(226, 232, 240, 0.9),
+    0 0 80px rgba(148, 163, 184, 0.5),
+    0 0 140px rgba(99, 102, 241, 0.35),
+    inset -10px -10px 25px rgba(15, 23, 42, 0.45);
+  overflow: hidden;
+  animation: pulse-moon 8s ease-in-out infinite alternate;
+}
+
+/* Moon Surface Craters */
+.crater {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(148, 163, 184, 0.5) 0%, rgba(100, 116, 139, 0.7) 80%, rgba(71, 85, 105, 0.9) 100%);
+  box-shadow: inset 1px 1px 2px rgba(15, 23, 42, 0.6), 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.crater-1 { width: 22px; height: 22px; top: 22px; left: 30px; }
+.crater-2 { width: 15px; height: 15px; top: 58px; left: 24px; }
+.crater-3 { width: 28px; height: 28px; top: 48px; left: 58px; }
+.crater-4 { width: 12px; height: 12px; top: 24px; left: 68px; }
+.crater-5 { width: 18px; height: 18px; top: 78px; left: 45px; }
+
+.moon-halo {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(199, 210, 254, 0.25) 0%, rgba(147, 197, 253, 0.1) 50%, transparent 75%);
+  filter: blur(12px);
+  animation: pulse-halo 6s ease-in-out infinite alternate;
+}
+
+.moon-light-rays {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: -185px;
+  left: -185px;
+  background: radial-gradient(circle, rgba(165, 180, 252, 0.12) 0%, rgba(129, 140, 248, 0.04) 45%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* ================= VOLUMETRIC PARALLAX CLOUDS ================= */
+.clouds-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  pointer-events: none;
+  background-repeat: repeat-x;
+  will-change: transform;
+  contain: layout style; /* limit cloud repaint to their own layer */
+}
+
+/* Back Cloud Layer (Slow, high altitude, semi-transparent) */
+.clouds-back {
+  z-index: 5;
+  top: 2%;
+  height: 450px;
+  opacity: 0.65;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 350" fill="none"><path d="M120 280 C110 240, 150 200, 200 210 C220 170, 280 160, 320 190 C360 170, 420 190, 440 230 C480 220, 520 250, 510 280 Z M620 270 C600 230, 650 180, 710 190 C740 150, 810 140, 860 170 C900 150, 960 170, 980 220 C1010 210, 1050 240, 1040 270 Z" fill="%23ffffff" opacity="0.6"/></svg>');
+  background-size: 1100px 380px;
+  animation: cloud-drift-back 110s linear infinite;
+}
+
+/* Mid Cloud Layer (Medium speed, puffy) */
+.clouds-mid {
+  z-index: 6;
+  top: 10%;
+  height: 500px;
+  opacity: 0.85;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" fill="none"><path d="M50 320 C30 260, 90 200, 160 210 C190 140, 280 120, 340 170 C400 130, 490 150, 520 220 C580 200, 640 240, 630 320 Z M700 330 C680 280, 730 230, 800 235 C830 180, 910 170, 960 205 C1010 170, 1090 190, 1120 250 C1170 240, 1220 280, 1210 330 Z" fill="%23ffffff" opacity="0.8"/></svg>');
+  background-size: 1300px 420px;
+  animation: cloud-drift-mid 75s linear infinite;
+}
+
+/* Front Cloud Layer (Faster, crisp, closer) */
+.clouds-front {
+  z-index: 7;
+  top: 18%;
+  height: 550px;
+  opacity: 0.95;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 450" fill="none"><path d="M100 380 C70 300, 140 230, 230 240 C270 160, 380 140, 460 200 C540 150, 660 180, 700 270 C780 250, 860 300, 850 380 Z M920 390 C890 320, 960 260, 1050 270 C1090 190, 1200 180, 1270 230 C1340 190, 1450 220, 1480 300 C1540 290, 1600 340, 1590 390 Z" fill="%23ffffff" opacity="0.95"/></svg>');
+  background-size: 1500px 480px;
+  animation: cloud-drift-front 48s linear infinite;
+}
+
+/* Cloud Lighting & Tinting for Night & Sunset */
+body.theme-day .clouds-layer {
+  filter: drop-shadow(0 15px 30px rgba(186, 230, 253, 0.45));
+}
+
+body.theme-sunset .clouds-layer {
+  filter: drop-shadow(0 15px 35px rgba(249, 115, 22, 0.4)) hue-rotate(-25deg) brightness(0.9) saturate(1.4);
+}
+
+body.theme-night .clouds-layer {
+  opacity: 0.32;
+  filter: drop-shadow(0 15px 35px rgba(15, 23, 42, 0.8)) brightness(0.22) contrast(1.3) invert(0.05);
+}
+
+body.theme-sunrise .clouds-layer {
+  filter: drop-shadow(0 15px 35px rgba(244, 114, 182, 0.4)) hue-rotate(15deg) brightness(0.95);
+}
+
+/* ================= HORIZON GLOW & MOUNTAINS ================= */
+.horizon-glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 350px;
+  z-index: 8;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 100%);
+  transition: background 1.5s ease;
+}
+
+body.theme-night .horizon-glow {
+  background: linear-gradient(0deg, rgba(30, 27, 75, 0.5) 0%, rgba(15, 23, 42, 0.2) 50%, transparent 100%);
+}
+
+body.theme-sunset .horizon-glow {
+  background: linear-gradient(0deg, rgba(253, 224, 71, 0.45) 0%, rgba(249, 115, 22, 0.25) 50%, transparent 100%);
+}
+
+.horizon-mountains {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  height: 280px;
+  z-index: 9;
+  pointer-events: none;
+}
+
+.mountain-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: color 1.5s ease, opacity 1.5s ease;
+}
+
+.mountain-svg.back {
+  opacity: 0.35;
+  color: #60a5fa;
+  transform: scaleY(1.15);
+}
+
+.mountain-svg.front {
+  opacity: 0.5;
+  color: #3b82f6;
+}
+
+body.theme-sunset .mountain-svg.back {
+  color: #831843;
+  opacity: 0.6;
+}
+body.theme-sunset .mountain-svg.front {
+  color: #4c1d95;
+  opacity: 0.75;
+}
+
+body.theme-night .mountain-svg.back {
+  color: #0f172a;
+  opacity: 0.7;
+}
+body.theme-night .mountain-svg.front {
+  color: #020617;
+  opacity: 0.9;
+}
+
+/* ================= KEYFRAME ANIMATIONS ================= */
+@keyframes cloud-drift-back {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+@keyframes cloud-drift-mid {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+@keyframes cloud-drift-front {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+@keyframes pulse-sun {
+  0% { transform: scale(0.98); box-shadow: 0 0 45px rgba(253, 224, 71, 0.95), 0 0 90px rgba(245, 158, 11, 0.75); }
+  100% { transform: scale(1.04); box-shadow: 0 0 65px rgba(253, 224, 71, 1), 0 0 130px rgba(245, 158, 11, 0.9); }
+}
+
+@keyframes pulse-moon {
+  0% { transform: scale(0.99); box-shadow: 0 0 35px rgba(226, 232, 240, 0.8), 0 0 80px rgba(148, 163, 184, 0.45); }
+  100% { transform: scale(1.02); box-shadow: 0 0 50px rgba(226, 232, 240, 1), 0 0 110px rgba(165, 180, 252, 0.6); }
+}
+
+@keyframes rotate-corona {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-halo {
+  0% { opacity: 0.7; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1.08); }
+}

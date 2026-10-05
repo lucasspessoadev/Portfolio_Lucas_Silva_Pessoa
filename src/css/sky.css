@@ -676,6 +676,12 @@ body.theme-sunrise .beach-base-fill {
   pointer-events: auto;
 }
 
+@media (max-width: 768px) {
+  .character-sitting-spot {
+    display: none !important;
+  }
+}
+
 .spot-shadow {
   position: absolute;
   bottom: 2px;

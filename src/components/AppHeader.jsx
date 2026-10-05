@@ -55,7 +55,7 @@ export function AppHeader({
         {/* Brand Logo */}
         <a href="#hero" className="brand-logo">
           <img src="/img/logo.png" alt="Lucas Silva Pessoa Logo" className="brand-logo-img" />
-          <span className="logo-text">Lucas Silva <span className="highlight">Pessoa</span></span>
+          <span className="logo-text">Lucas <span className="logo-surname">Silva <span className="highlight">Pessoa</span></span></span>
         </a>
 
         {/* Navigation Links */}
@@ -146,6 +146,29 @@ export function AppHeader({
             <span className="scrubber-value">{formattedTime}</span>
             <span className="scrubber-period">{phaseName}</span>
           </div>
+
+          {/* Quick theme selector inside drawer for mobile access */}
+          <div className="drawer-mode-selector">
+            <button
+              className={`drawer-mode-btn ${mode === 'auto' ? 'active' : ''}`}
+              onClick={() => setMode('auto')}
+            >
+              <i className="fa-solid fa-clock-rotate-left"></i> Real / Auto
+            </button>
+            <button
+              className={`drawer-mode-btn ${mode === 'day' ? 'active' : ''}`}
+              onClick={() => setMode('day')}
+            >
+              <i className="fa-solid fa-sun"></i> Dia
+            </button>
+            <button
+              className={`drawer-mode-btn ${mode === 'night' ? 'active' : ''}`}
+              onClick={() => setMode('night')}
+            >
+              <i className="fa-solid fa-moon"></i> Noite
+            </button>
+          </div>
+
           <div className="slider-container">
             <span className="slider-marker" style={{ left: '0%' }}>00:00 🌙</span>
             <span className="slider-marker" style={{ left: '25%' }}>06:00 🌅</span>

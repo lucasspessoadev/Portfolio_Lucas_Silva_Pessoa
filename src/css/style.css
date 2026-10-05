@@ -530,7 +530,7 @@ body.theme-night .theme-mode-buttons {
 }
 
 .time-scrubber-drawer.open {
-  max-height: 180px;
+  max-height: 260px;
   opacity: 1;
 }
 
@@ -552,6 +552,38 @@ body.theme-night .theme-mode-buttons {
   flex-wrap: wrap;
   gap: 8px;
   font-size: 0.88rem;
+}
+
+.drawer-mode-selector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  padding: 4px 0;
+  border-top: 1px dashed var(--bg-card-border);
+  border-bottom: 1px dashed var(--bg-card-border);
+}
+
+.drawer-mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1px solid var(--bg-card-border);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.drawer-mode-btn:hover,
+.drawer-mode-btn.active {
+  background: var(--accent-primary);
+  color: #ffffff;
+  border-color: var(--accent-primary);
 }
 
 .scrubber-value {
@@ -2280,6 +2312,13 @@ body.theme-night .timeline-tags span {
   .about-grid,
   .contact-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about-card-profile {
+    position: relative;
+    top: 0;
+    width: 100%;
   }
 
   .nav-menu {
@@ -2312,8 +2351,75 @@ body.theme-night .timeline-tags span {
 }
 
 @media (max-width: 768px) {
-  .theme-mode-buttons .btn-label {
-    display: none;
+  .app-header {
+    top: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .header-container {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+
+  .brand-logo {
+    font-size: 0.95rem;
+    gap: 6px;
+  }
+
+  .brand-logo-img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .theme-mode-buttons {
+    display: none; /* Accessible inside time scrubber drawer on mobile */
+  }
+
+  .sky-control-center {
+    gap: 4px;
+  }
+
+  .time-status-pill {
+    padding: 4px 9px;
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+
+  .slider-toggle-btn,
+  .mobile-toggle {
+    width: 30px;
+    height: 30px;
+  }
+
+  .section-padding {
+    padding: 60px 16px;
+  }
+
+  .about-card-content {
+    padding: 22px 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .content-heading {
+    font-size: 1.3rem;
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+
+  .content-paragraph {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .project-detail-text {
+    text-align: left;
+  }
+
+  .video-showcase-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -2330,12 +2436,82 @@ body.theme-night .timeline-tags span {
     grid-template-columns: 1fr;
   }
 
-  .theme-mode-buttons .btn-label {
-    display: none;
-  }
-
   .footer-container {
     flex-direction: column;
     text-align: center;
+  }
+
+  .scrubber-inner {
+    padding: 12px 14px;
+  }
+
+  .slider-marker {
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    top: 8px;
+    width: calc(100% - 16px);
+  }
+
+  .header-container {
+    padding: 5px 8px;
+    gap: 4px;
+  }
+
+  .logo-surname {
+    display: none; /* Show "Lucas" to fit header perfectly on narrow mobile screens */
+  }
+
+  .time-status-pill {
+    padding: 4px 7px;
+    font-size: 0.72rem;
+  }
+
+  .time-status-pill .pulse-dot {
+    display: none;
+  }
+
+  .section-padding {
+    padding: 50px 12px;
+  }
+
+  .section-title {
+    font-size: 1.55rem;
+  }
+
+  .about-card-profile {
+    padding: 20px 14px;
+  }
+
+  .about-card-content {
+    padding: 18px 14px;
+  }
+
+  .about-video-showcase {
+    padding: 12px;
+    margin: 16px 0;
+  }
+
+  .video-caption-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .project-expand-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .drawer-mode-selector {
+    gap: 4px;
+  }
+
+  .drawer-mode-btn {
+    padding: 4px 8px;
+    font-size: 0.72rem;
   }
 }

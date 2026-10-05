@@ -16,8 +16,7 @@ export function useSkyEngine() {
   const mouseRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0, lastMove: 0 });
   const animFrameRef = useRef(null);
   const themeRef = useRef(theme);
-  const starRotationRef = useRef(0);
-  const isScrollingRef = useRef(false);
+    const starRotationRef = useRef(0);
 
   themeRef.current = theme;
 
@@ -38,7 +37,11 @@ export function useSkyEngine() {
     let newPhaseName = 'Dia Pleno';
     let newIcon = 'fa-sun';
 
-    if (effectiveMin >= 300 && effectiveMin < 420) {
+    if (effectiveMin >= 0 && effectiveMin <= 295) {
+      newTheme = 'night';
+      newPhaseName = 'Tempestade Noturna';
+      newIcon = 'fa-cloud-bolt';
+    } else if (effectiveMin >= 300 && effectiveMin < 420) {
       newTheme = 'sunrise';
       newPhaseName = 'Amanhecer Radiante';
       newIcon = 'fa-cloud-sun';
@@ -61,8 +64,10 @@ export function useSkyEngine() {
     setIconClass(newIcon);
     setCurrentMinute(effectiveMin);
 
+    const isStormActive = effectiveMin >= 0 && effectiveMin <= 295;
     document.body.classList.remove('theme-day', 'theme-sunset', 'theme-night', 'theme-sunrise');
     document.body.classList.add(`theme-${newTheme}`);
+    document.body.classList.toggle('is-storm', isStormActive);
 
     const width = window.innerWidth || 1200;
     const height = window.innerHeight || 800;
@@ -117,15 +122,20 @@ export function useSkyEngine() {
   const createStars = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const w = canvas.width = window.innerWidth;
-    const h = canvas.height = window.innerHeight;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = `${w}px`;
+    canvas.style.height = `${h}px`;
     const stars = [];
 
     for (let i = 0; i < 90; i++) {
       stars.push({
         x: Math.random() * w,
         y: Math.random() * h * 0.85,
-        radius: Math.random() * 1.5 + 0.5,
+        radius: Math.random() * 0.5 + 0.3,
         baseAlpha: Math.random() * 0.7 + 0.3,
         alpha: Math.random(),
         twinkleSpeed: Math.random() * 0.02 + 0.005,
@@ -142,8 +152,10 @@ export function useSkyEngine() {
     if (!canvas || (currentT !== 'night' && currentT !== 'sunset')) return;
     if (shootingStarsRef.current.length >= 1) return;
 
-    const startX = Math.random() * (canvas.width * 0.8) + (canvas.width * 0.1);
-    const startY = Math.random() * (canvas.height * 0.35);
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const startX = Math.random() * (w * 0.8) + (w * 0.1);
+    const startY = Math.random() * (h * 0.35);
     const angle = (Math.PI / 4) + (Math.random() * 0.2 - 0.1);
     const speed = Math.random() * 6 + 10;
 
@@ -160,14 +172,11 @@ export function useSkyEngine() {
 
   useEffect(() => {
     let resizeTimer = null;
-    let scrollTimer = null;
 
     const handleResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         if (canvasRef.current) {
-          canvasRef.current.width = window.innerWidth;
-          canvasRef.current.height = window.innerHeight;
           createStars();
         }
       }, 250);
@@ -181,17 +190,8 @@ export function useSkyEngine() {
       mouseRef.current.targetY = (e.clientY / window.innerHeight - 0.5) * 14;
     };
 
-    const handleScroll = () => {
-      isScrollingRef.current = true;
-      clearTimeout(scrollTimer);
-      scrollTimer = setTimeout(() => {
-        isScrollingRef.current = false;
-      }, 150);
-    };
-
     window.addEventListener('resize', handleResize);
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('scroll', handleScroll, { passive: true });
 
     createStars();
 
@@ -200,75 +200,81 @@ export function useSkyEngine() {
     }, 6000);
 
     const loop = () => {
-      if (!isScrollingRef.current) {
-        mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * 0.08;
-        mouseRef.current.y += (mouseRef.current.targetY - mouseRef.current.y) * 0.08;
+      mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * 0.08;
+      mouseRef.current.y += (mouseRef.current.targetY - mouseRef.current.y) * 0.08;
 
-        starRotationRef.current += 0.00015;
+      starRotationRef.current += 0.00015;
 
-        const canvas = canvasRef.current;
-        if (canvas) {
-          const ctx = canvas.getContext('2d');
-          const isDarkSky = themeRef.current === 'night' || themeRef.current === 'sunset' || themeRef.current === 'sunrise';
+      const canvas = canvasRef.current;
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const isDarkSky = themeRef.current === 'night' || themeRef.current === 'sunset' || themeRef.current === 'sunrise';
 
-          if (!isDarkSky && shootingStarsRef.current.length === 0) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-          } else {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (!isDarkSky && shootingStarsRef.current.length === 0) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            const cx = canvas.width / 2;
-            const cy = canvas.height / 2;
+          const w = canvas.width / dpr;
+          const h = canvas.height / dpr;
+          const cx = w / 2;
+          const cy = h / 2;
 
-            ctx.save();
-            ctx.translate(cx, cy);
-            ctx.rotate(starRotationRef.current);
-            ctx.translate(-cx, -cy);
+          ctx.save();
+          ctx.scale(dpr, dpr);
 
-            const groups = { '#ffffff': [], '#93c5fd': [], '#fef08a': [] };
-            starsRef.current.forEach(star => {
-              star.alpha += star.twinkleSpeed;
-              if (star.alpha > 1 || star.alpha < 0.2) star.twinkleSpeed = -star.twinkleSpeed;
-              if (groups[star.color]) groups[star.color].push(star);
+          ctx.save();
+          ctx.translate(cx, cy);
+          ctx.rotate(starRotationRef.current);
+          ctx.translate(-cx, -cy);
+
+          const groups = { '#ffffff': [], '#93c5fd': [], '#fef08a': [] };
+          starsRef.current.forEach(star => {
+            star.alpha += star.twinkleSpeed;
+            if (star.alpha > 1 || star.alpha < 0.2) star.twinkleSpeed = -star.twinkleSpeed;
+            if (groups[star.color]) groups[star.color].push(star);
+          });
+
+          for (const [color, list] of Object.entries(groups)) {
+            if (!list.length) continue;
+            ctx.fillStyle = color;
+            list.forEach(star => {
+              const alpha = Math.max(0.15, Math.min(1, star.alpha * star.baseAlpha));
+              ctx.globalAlpha = alpha;
+              ctx.beginPath();
+              ctx.arc(
+                star.x + mouseRef.current.x * star.layer,
+                star.y + mouseRef.current.y * star.layer,
+                star.radius, 0, Math.PI * 2
+              );
+              ctx.fill();
             });
+          }
 
-            for (const [color, list] of Object.entries(groups)) {
-              if (!list.length) continue;
-              ctx.fillStyle = color;
-              list.forEach(star => {
-                const alpha = Math.max(0.15, Math.min(1, star.alpha * star.baseAlpha));
-                ctx.globalAlpha = alpha;
-                ctx.beginPath();
-                ctx.arc(
-                  star.x + mouseRef.current.x * star.layer,
-                  star.y + mouseRef.current.y * star.layer,
-                  star.radius, 0, Math.PI * 2
-                );
-                ctx.fill();
-              });
-            }
+          ctx.restore();
 
+          for (let j = shootingStarsRef.current.length - 1; j >= 0; j--) {
+            const s = shootingStarsRef.current[j];
+            ctx.save();
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(255, 255, 255, ${s.opacity})`;
+            ctx.lineWidth = 1.8;
+            ctx.moveTo(s.x, s.y);
+            ctx.lineTo(s.x - s.dx * 2.5, s.y - s.dy * 2.5);
+            ctx.stroke();
             ctx.restore();
 
-            for (let j = shootingStarsRef.current.length - 1; j >= 0; j--) {
-              const s = shootingStarsRef.current[j];
-              ctx.save();
-              ctx.beginPath();
-              ctx.strokeStyle = `rgba(255, 255, 255, ${s.opacity})`;
-              ctx.lineWidth = 1.8;
-              ctx.moveTo(s.x, s.y);
-              ctx.lineTo(s.x - s.dx * 2.5, s.y - s.dy * 2.5);
-              ctx.stroke();
-              ctx.restore();
+            s.x += s.dx;
+            s.y += s.dy;
+            s.opacity -= s.decay;
 
-              s.x += s.dx;
-              s.y += s.dy;
-              s.opacity -= s.decay;
-
-              if (s.opacity <= 0 || s.x > canvas.width || s.y > canvas.height) {
-                shootingStarsRef.current.splice(j, 1);
-              }
+            if (s.opacity <= 0 || s.x > w || s.y > h) {
+              shootingStarsRef.current.splice(j, 1);
             }
           }
+
+          ctx.restore();
         }
       }
 
@@ -289,7 +295,6 @@ export function useSkyEngine() {
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('visibilitychange', handleVisibility);
       clearInterval(shootingStarInterval);
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
@@ -320,6 +325,7 @@ export function useSkyEngine() {
   }, [customMinute, getEffectiveMinute, updateSkyState]);
 
   const formattedTime = `${String(Math.floor(currentMinute / 60)).padStart(2, '0')}:${String(Math.floor(currentMinute % 60)).padStart(2, '0')}`;
+  const isStorm = currentMinute >= 0 && currentMinute <= 295;
 
   return {
     mode,
@@ -329,6 +335,7 @@ export function useSkyEngine() {
     iconClass,
     currentMinute,
     formattedTime,
+    isStorm,
     sunPos,
     moonPos,
     canvasRef

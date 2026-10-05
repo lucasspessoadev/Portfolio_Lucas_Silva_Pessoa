@@ -34,7 +34,28 @@ export function Experience() {
             </div>
           </div>
 
-          {/* Timeline Item 2 - Experiência Anterior */}
+          {/* Timeline Item 2 - Graduação Acadêmica em Andamento */}
+          <div className="timeline-item">
+            <div className="timeline-dot">
+              <i className="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div className="timeline-card glass-panel">
+              <span className="timeline-badge">fev/2024 - jul/2026</span>
+              <h3 className="timeline-role">Graduação em Análise e Desenvolvimento de Sistemas</h3>
+              <h4 className="timeline-company"><i className="fa-solid fa-university"></i> Senac EAD (2.016 horas)</h4>
+              <p className="timeline-text">
+                Formação superior em andamento abrangendo engenharia de software, modelagem de bancos de dados, desenvolvimento de sistemas distribuídos, segurança da informação e arquitetura de software.
+              </p>
+              <div className="timeline-tags">
+                <span>Engenharia de Software</span>
+                <span>Bancos de Dados</span>
+                <span>Arquitetura POO</span>
+                <span>Clean Code</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Timeline Item 3 - Experiência Profissional Inicial */}
           <div className="timeline-item">
             <div className="timeline-dot">
               <i className="fa-solid fa-laptop-code"></i>
@@ -56,28 +77,7 @@ export function Experience() {
             </div>
           </div>
 
-          {/* Timeline Item 3 - Graduação */}
-          <div className="timeline-item">
-            <div className="timeline-dot">
-              <i className="fa-solid fa-graduation-cap"></i>
-            </div>
-            <div className="timeline-card glass-panel">
-              <span className="timeline-badge">fev/2024 - jul/2026</span>
-              <h3 className="timeline-role">Graduação em Análise e Desenvolvimento de Sistemas</h3>
-              <h4 className="timeline-company"><i className="fa-solid fa-university"></i> Senac EAD (2.016 horas)</h4>
-              <p className="timeline-text">
-                Formação superior em andamento abrangendo engenharia de software, modelagem de bancos de dados, desenvolvimento de sistemas distribuídos, segurança da informação e arquitetura de software.
-              </p>
-              <div className="timeline-tags">
-                <span>Engenharia de Software</span>
-                <span>Bancos de Dados</span>
-                <span>Arquitetura POO</span>
-                <span>Clean Code</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Timeline Item 4 - Certificações e Cursos */}
+          {/* Timeline Item 4 - Certificações e Cursos de Base */}
           <div className="timeline-item">
             <div className="timeline-dot">
               <i className="fa-solid fa-certificate"></i>

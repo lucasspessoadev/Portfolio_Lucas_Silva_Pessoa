@@ -19,21 +19,50 @@ export function Contact() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setFeedbackMessage(null);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFeedbackMessage('✨ Sua mensagem foi enviada com sucesso! Responderei em breve.');
-      showToast('Mensagem enviada com sucesso! Entrarei em contato em breve.', 'success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+    try {
+      // FormSubmit AJAX API - Envio direto para a sua caixa de e-mail sem expor senhas/chaves
+      const response = await fetch(`https://formsubmit.co/ajax/${emailAddress}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          nome: formData.name,
+          email: formData.email,
+          _subject: formData.subject || `Novo contato no portfólio de ${formData.name}`,
+          mensagem: formData.message,
+          _captcha: 'false'
+        })
+      });
 
+      const data = await response.json();
+
+      if (response.ok || data.success === 'true' || data.success === true) {
+        showToast('Mensagem enviada com sucesso! Responderei em breve 📧', 'success');
+        setFeedbackMessage('✨ Sua mensagem foi entregue com sucesso na minha caixa de entrada!');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Erro ao enviar mensagem');
+      }
+    } catch (error) {
+      // Fallback em nova aba em caso de instabilidade
+      const subjectText = formData.subject || `Contato do Portfólio - ${formData.name}`;
+      const bodyText = `Nome: ${formData.name}\nE-mail do remetente: ${formData.email}\n\nMensagem:\n${formData.message}`;
+      window.open(`mailto:${emailAddress}?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`, '_blank');
+      showToast('Redirecionando para o e-mail...', 'info');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } finally {
+      setIsSubmitting(false);
       setTimeout(() => {
         setFeedbackMessage(null);
-      }, 5000);
-    }, 1200);
+      }, 7000);
+    }
   };
 
   return (

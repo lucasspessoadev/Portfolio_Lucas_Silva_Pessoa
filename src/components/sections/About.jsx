@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export function About() {
+  const [isProjectExpanded, setIsProjectExpanded] = useState(false);
+
   return (
     <section id="about" className="section-padding about-section">
       <div className="section-container">
@@ -63,6 +65,19 @@ export function About() {
                 <i className="fa-brands fa-whatsapp"></i>
               </a>
             </div>
+
+            {/* PDF CV Download Button */}
+            <a 
+              href="/curriculo/lucas-silva-pessoa.pdf" 
+              download="Lucas_Silva_Pessoa_Curriculo.pdf"
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn btn-cv btn-profile-cv"
+              title="Baixar Currículo completo em PDF"
+            >
+              <i className="fa-solid fa-file-pdf"></i>
+              <span>Download Currículo (PDF)</span>
+            </a>
           </div>
 
           {/* Detailed Bio & Value Proposition */}
@@ -73,14 +88,14 @@ export function About() {
 
             <p className="content-paragraph">
               Olá! Sou o <strong>Lucas Silva Pessoa</strong>, Desenvolvedor Full Stack em formação em Análise e Desenvolvimento de Sistemas 
-              pelo <strong>Senac EAD (2.016h)</strong>. Possuo experiência prática na construção de aplicações completas, 
+              pelo <strong>Senac EAD</strong>. Possuo experiência prática na construção de aplicações completas, 
               integração de APIs RESTful, desenvolvimento back-end e front-end, além de automação de processos corporativos.
             </p>
 
             <p className="content-paragraph">
               Minha atuação abrange linguagens como <strong>Java (Spring Boot), PHP, JavaScript (React.js, Node.js), C# e Python</strong>, 
               bancos de dados relacionais (MySQL/SQL), ambiente em nuvem com <strong>AWS (EC2, S3) e Docker</strong>, além de ferramentas de automação e Low-Code como <strong>n8n e Typebot</strong>. 
-              Trabalho sob metodologias ágeis (Scrum e Kanban), unindo rigor em Clean Code e arquitetura orientada a objetos à vivência na área financeira.
+              Trabalho sob metodologias ágeis (Scrum e Kanban), unindo rigor em Clean Code e arquitetura orientada a objetos à vivência na área financeira e ao desenvolvimento de soluções tecnológicas para a área médica e da saúde.
             </p>
 
             {/* Entrennection Startup Presentation Video Frame */}
@@ -98,43 +113,46 @@ export function About() {
                   loop 
                   muted 
                   playsInline
-                  controls
                   className="about-showcase-video"
                 />
               </div>
-              <p className="video-caption">
-                <i className="fa-solid fa-users"></i> Apresentação do pitch da startup <strong>Entrennection</strong> em 2023 para um público de mais de 300 pessoas.
-              </p>
-            </div>
+              <div className="video-caption-container">
+                <p className="video-caption">
+                  <i className="fa-solid fa-users"></i> Apresentação do pitch da startup <strong>Entrennection</strong> em 2023 para um público de mais de 300 pessoas.
+                </p>
+                <button 
+                  className="project-expand-btn"
+                  onClick={() => setIsProjectExpanded(!isProjectExpanded)}
+                  aria-expanded={isProjectExpanded}
+                >
+                  Ver resumo do projeto <i className={`fa-solid fa-chevron-${isProjectExpanded ? 'up' : 'down'}`}></i>
+                </button>
+              </div>
 
-            {/* Highlights Pill Grid */}
-            <div className="highlights-grid">
-              <div className="highlight-item">
-                <div className="hl-icon"><i className="fa-brands fa-java"></i></div>
-                <div className="hl-text">
-                  <strong>Back-End Robust</strong>
-                  <span>Java (Spring Boot), Node.js, PHP, C# e APIs RESTful</span>
-                </div>
-              </div>
-              <div className="highlight-item">
-                <div className="hl-icon"><i className="fa-brands fa-react"></i></div>
-                <div className="hl-text">
-                  <strong>Front-End Moderno</strong>
-                  <span>React.js, HTML5, CSS3 e JavaScript ES6+</span>
-                </div>
-              </div>
-              <div className="highlight-item">
-                <div className="hl-icon"><i className="fa-solid fa-gears"></i></div>
-                <div className="hl-text">
-                  <strong>Automação & Low-Code</strong>
-                  <span>Integrações inteligentes com n8n e Typebot</span>
-                </div>
-              </div>
-              <div className="highlight-item">
-                <div className="hl-icon"><i className="fa-brands fa-aws"></i></div>
-                <div className="hl-text">
-                  <strong>Cloud & DevOps</strong>
-                  <span>AWS (EC2, S3), Docker, Git, GitHub e Maven</span>
+              <div className={`project-expanded-details ${isProjectExpanded ? 'open' : ''}`}>
+                <div className="project-details-inner">
+                  <h4 className="project-detail-title">Sobre o projeto</h4>
+                  <p className="project-detail-text">
+                    Este é um projeto de uma plataforma voltada para auxiliar os microempreendedores a superarem suas dificuldades e alcançarem o sucesso em seus negócios. A plataforma visa fornecer suporte financeiro, gestão orçamentária, gestão de pessoas, implementação de novas ferramentas e tecnologias, negociação e muito mais. A ideia central é criar um ambiente onde os microempreendedores possam se cadastrar, escolher suas áreas de interesse e estabelecer parcerias com outros empreendedores, visando o crescimento e o desenvolvimento conjunto.
+                  </p>
+
+                  <h4 className="project-detail-title">Objetivo</h4>
+                  <p className="project-detail-text">
+                    A plataforma busca estabelecer uma ponte entre os microempreendedores, proporcionando-lhes oportunidades de aprendizado, crescimento e conexão com outros usuários. O impacto esperado na comunidade é o fortalecimento dos negócios dos microempreendedores, permitindo-lhes superar dificuldades e alcançar o sucesso de forma conjunta.
+                  </p>
+
+                  <h4 className="project-detail-title">Funcionalidades</h4>
+                  <ul className="project-detail-list">
+                    <li><strong>Cadastro de microempreendedores:</strong> Os usuários poderão se cadastrar na plataforma, fornecendo as informações necessárias sobre seus negócios e áreas de atuação.</li>
+                    <li><strong>Parcerias comerciais:</strong> Dentro da plataforma, os microempreendedores poderão buscar por possíveis parcerias comerciais com outros usuários, visando criar novas empresas, estabelecer um novo CNPJ ou desenvolver produtos mais completos.</li>
+                    <li><strong>Plano "Plus":</strong> Os usuários poderão aderir ao plano "Plus", que oferece acesso a aulas, mentorias e consultorias em parceria com organizações renomadas, como Sebrae e SENAC. Esse plano tem como objetivo fornecer suporte adicional aos microempreendedores, ajudando-os a impulsionar seus negócios.</li>
+                    <li><strong>Redes sociais e interação:</strong> A plataforma contará com recursos de rede social, como postagens, noticias e conexões, onde os usuários podem disponibilizar suas empresas para possíveis parcerias.</li>
+                  </ul>
+
+                  <h4 className="project-detail-title">Minha Atuação</h4>
+                  <p className="project-detail-text">
+                    Neste projeto, atuei como <strong>Desenvolvedor Full-Stack</strong>, sendo responsável por toda a arquitetura, modelagem de dados, back-end e front-end da plataforma. Além da liderança técnica, também atuei como responsável <strong>Financeiro</strong> da startup, gerenciando o planejamento orçamentário, precificação e estruturação de custos do negócio.
+                  </p>
                 </div>
               </div>
             </div>

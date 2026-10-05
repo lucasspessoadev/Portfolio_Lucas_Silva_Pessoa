@@ -8,8 +8,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
@@ -240,7 +240,7 @@ body.theme-sunrise .moon {
   top: 2%;
   height: 450px;
   opacity: 0.65;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 350" fill="none"><path d="M120 280 C110 240, 150 200, 200 210 C220 170, 280 160, 320 190 C360 170, 420 190, 440 230 C480 220, 520 250, 510 280 Z M620 270 C600 230, 650 180, 710 190 C740 150, 810 140, 860 170 C900 150, 960 170, 980 220 C1010 210, 1050 240, 1040 270 Z" fill="%23ffffff" opacity="0.6"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 350" fill="none"><path d="M120 280 C110 240, 150 200, 200 210 C220 170, 280 160, 320 190 C360 170, 420 190, 440 230 C480 220, 520 250, 510 280 Z M620 270 C600 230, 650 180, 710 190 C740 150, 810 140, 860 170 C900 150, 960 170, 980 220 C1010 210, 1050 240, 1040 270 Z" fill="%23ffffff" opacity="0.6"/></svg>');
   background-size: 1100px 380px;
   animation: cloud-drift-back 110s linear infinite;
 }
@@ -251,7 +251,7 @@ body.theme-sunrise .moon {
   top: 10%;
   height: 500px;
   opacity: 0.85;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" fill="none"><path d="M50 320 C30 260, 90 200, 160 210 C190 140, 280 120, 340 170 C400 130, 490 150, 520 220 C580 200, 640 240, 630 320 Z M700 330 C680 280, 730 230, 800 235 C830 180, 910 170, 960 205 C1010 170, 1090 190, 1120 250 C1170 240, 1220 280, 1210 330 Z" fill="%23ffffff" opacity="0.8"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 400" fill="none"><path d="M50 320 C30 260, 90 200, 160 210 C190 140, 280 120, 340 170 C400 130, 490 150, 520 220 C580 200, 640 240, 630 320 Z M700 330 C680 280, 730 230, 800 235 C830 180, 910 170, 960 205 C1010 170, 1090 190, 1120 250 C1170 240, 1220 280, 1210 330 Z" fill="%23ffffff" opacity="0.8"/></svg>');
   background-size: 1300px 420px;
   animation: cloud-drift-mid 75s linear infinite;
 }
@@ -262,7 +262,7 @@ body.theme-sunrise .moon {
   top: 18%;
   height: 550px;
   opacity: 0.95;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 450" fill="none"><path d="M100 380 C70 300, 140 230, 230 240 C270 160, 380 140, 460 200 C540 150, 660 180, 700 270 C780 250, 860 300, 850 380 Z M920 390 C890 320, 960 260, 1050 270 C1090 190, 1200 180, 1270 230 C1340 190, 1450 220, 1480 300 C1540 290, 1600 340, 1590 390 Z" fill="%23ffffff" opacity="0.95"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 450" fill="none"><path d="M100 380 C70 300, 140 230, 230 240 C270 160, 380 140, 460 200 C540 150, 660 180, 700 270 C780 250, 860 300, 850 380 Z M920 390 C890 320, 960 260, 1050 270 C1090 190, 1200 180, 1270 230 C1340 190, 1450 220, 1480 300 C1540 290, 1600 340, 1590 390 Z" fill="%23ffffff" opacity="0.95"/></svg>');
   background-size: 1500px 480px;
   animation: cloud-drift-front 48s linear infinite;
 }

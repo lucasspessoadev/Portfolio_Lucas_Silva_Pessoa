@@ -3,6 +3,7 @@ import { ToastProvider, useToast } from './context/ToastContext';
 import { useSkyEngine } from './hooks/useSkyEngine';
 import { useSoundscape } from './hooks/useSoundscape';
 import { useScrollReveal } from './hooks/useScrollReveal';
+// import { useSlowScrollSnap } from './hooks/useSlowScrollSnap';
 import { SkyViewport } from './components/SkyViewport';
 import { AppHeader } from './components/AppHeader';
 import { Hero } from './components/sections/Hero';
@@ -20,6 +21,7 @@ function PortfolioContent() {
   const sky = useSkyEngine();
   const soundscape = useSoundscape(sky.theme, showToast);
   useScrollReveal();
+  // useSlowScrollSnap(); // Removido pois estava causando travamento no scroll
   const [activeModalProject, setActiveModalProject] = useState(null);
 
   return (
@@ -30,6 +32,7 @@ function PortfolioContent() {
         sunPos={sky.sunPos}
         moonPos={sky.moonPos}
         theme={sky.theme}
+        isStorm={sky.isStorm}
       />
 
       {/* TIME CONTROL WIDGET & NAVIGATION HEADER */}

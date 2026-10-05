@@ -1,140 +1,106 @@
 export const PROJECTS_DATA = {
   proj1: {
     id: "proj1",
-    title: "Sistema Integrado de Automação & Workflows",
-    category: "Full Stack & Automação de Processos",
+    title: "Entrennection — Plataforma para Microempreendedores",
+    category: "Plataforma Web & Ecossistema Colaborativo",
     badgeType: "Full Stack",
     isFeatured: true,
     bannerClass: "project-banner-1",
-    artIcon: "fa-diagram-project",
-    shortDescription: "Plataforma de orquestração de fluxos automatizados integrando APIs RESTful, n8n, Typebot e banco de dados MySQL para gestão de leads e processos.",
+    image: "/img/Entrennection.png",
+    artIcon: "fa-handshake-angle",
+    shortDescription: "Plataforma inovadora voltada a conectar microempreendedores, promover suporte financeiro, gestão de pessoas e parcerias estratégicas para o crescimento conjunto.",
     description: `
-      Solução desenvolvida para otimizar o fluxo de atendimento e automação corporativa. O sistema combina Webhooks, integrações via n8n e Typebot com um painel administrativo em React para monitoramento de métricas e status de execuções em tempo real.
+      O Entrennection é uma plataforma colaborativa desenvolvida para auxiliar microempreendedores a superarem desafios de gestão e alcançarem o sucesso em seus negócios. A solução fornece suporte financeiro, gestão orçamentária, gestão de pessoas, implementação de novas ferramentas e tecnologias, além de negociação. A ideia central é criar um ambiente dinâmico onde os empreendedores possam se cadastrar, selecionar suas áreas de interesse e estabelecer parcerias estratégicas, impulsionando o aprendizado, a inovação e o desenvolvimento em comunidade.
     `,
     features: [
-      "Integração de serviços externos via APIs RESTful com segurança OAuth2",
-      "Fluxos de automação n8n e chatbots inteligentes com Typebot",
-      "Dashboard de acompanhamento desenvolvido em React.js e Node.js",
-      "Estruturação de banco de dados MySQL com rotinas otimizadas CRUD"
+      "Ambiente de matchmaking e parcerias estratégicas entre microempreendedores por áreas de interesse",
+      "Módulos integrados para Gestão Orçamentária e Suporte Financeiro inteligente",
+      "Hub de ferramentas para Gestão de Pessoas e implementação de novas tecnologias",
+      "Oportunidades de aprendizado contínuo, negociação e fortalecimento comunitário",
+      "Interface responsiva, moderna e otimizada para facilidade de uso em qualquer dispositivo"
     ],
-    tags: ["n8n", "Typebot", "React.js", "Node.js", "MySQL", "APIs RESTful", "Docker"],
-    demoLink: "https://github.com/lucasspessoadev",
-    repoLink: "https://github.com/lucasspessoadev",
+    tags: ["React.js", "JavaScript (ES6+)", "Vercel", "Gestão Financeira", "HTML5", "CSS3", "UX/UI Design"],
+    demoLink: "https://entrennection.vercel.app/",
+    repoLink: "https://github.com/Entrennection/Entrennection",
     filterCategory: "fullstack"
   },
   proj2: {
     id: "proj2",
-    title: "Spring Boot Enterprise Banking API",
-    category: "Back-End & Arquitetura Java",
-    badgeType: "Back-End",
+    title: "Weather API App — Previsão do Tempo Global",
+    category: "Aplicações Web & APIs",
+    badgeType: "Web App",
     isFeatured: true,
     bannerClass: "project-banner-2",
-    artIcon: "fa-building-columns",
-    shortDescription: "API RESTful financeira robusta construída em Java 17 e Spring Boot com autenticação JWT, controle transacional e arquitetura em camadas.",
+    image: "/img/wheather.png",
+    artIcon: "fa-cloud-sun-rain",
+    shortDescription: "Aplicativo web responsivo de previsão do tempo em tempo real para qualquer cidade do mundo, com métricas detalhadas e tema visual dinâmico por temperatura.",
     description: `
-      API corporativa orientada ao segmento financeiro. Implementa operações bancárias (transferências, saldos, extratos), validação rigorosa de regras de negócio, tratamento centralizado de exceções e testes unitários.
+      O Weather API App é uma aplicação de previsão do tempo interativa e precisa que consome dados meteorológicos em tempo real. O aplicativo permite buscar qualquer cidade globalmente e fornece informações detalhadas como temperatura instantânea, umidade relativa do ar e velocidade do vento. Conta com ícones visuais inteligentes adaptados às condições climáticas atuais e um sistema exclusivo de Tema Dinâmico, onde as cores de fundo do cartão alteram-se automaticamente de acordo com a variação de temperatura.
     `,
     features: [
-      "Arquitetura em camadas (Controller, Service, Repository, DTOs)",
-      "Autenticação e autorização segura com Spring Security e JWT",
-      "Persistência de dados em MySQL utilizando Spring Data JPA / Hibernate",
-      "Deploy e conteinerização automatizada com Docker e AWS EC2"
+      "Busca instantânea de informações climáticas de qualquer cidade do mundo",
+      "Exibição detalhada de métricas: Temperatura, Umidade do ar e Velocidade do Vento",
+      "Ícones visuais dinâmicos correspondentes às condições meteorológicas atuais (sol, chuva, nuvens)",
+      "Tema Dinâmico: alternância automática das cores do cartão com base no nível de temperatura",
+      "Construção assíncrona ultra-rápida e layout responsivo adaptado para mobile e desktop"
     ],
-    tags: ["Java", "Spring Boot", "Spring Security", "MySQL", "Maven", "Docker", "AWS"],
-    demoLink: "https://github.com/lucasspessoadev",
-    repoLink: "https://github.com/lucasspessoadev",
-    filterCategory: "fullstack"
+    tags: ["JavaScript (ES6+)", "REST API", "Fetch API", "HTML5", "CSS3", "Git & GitHub Pages"],
+    demoLink: "https://lucasspessoadev.github.io/Weather/",
+    repoLink: "https://github.com/lucasspessoadev/Weather",
+    filterCategory: "web"
   },
   proj3: {
     id: "proj3",
-    title: "FinDash - Gestão Financeira Inteligente",
-    category: "Web Application & Analytics",
-    badgeType: "Web App",
-    isFeatured: false,
+    title: "DoaStock – Gestão de Inventário e Doações",
+    category: "Full Stack Serverless (Python & FastAPI)",
+    badgeType: "Full Stack",
+    isFeatured: true,
     bannerClass: "project-banner-3",
-    artIcon: "fa-chart-pie",
-    shortDescription: "Painel web interativo para controle de finanças pessoais e corporativas com relatórios gráficos, cálculo de metas e projeções de fluxo de caixa.",
+    image: "/img/doastock.png",
+    artIcon: "fa-boxes-stacked",
+    shortDescription: "Plataforma PWA serverless em Python (FastAPI) e Supabase (PostgreSQL) para controle de inventário social com alertas via Cron Jobs, SendGrid e leitor de código de barras.",
     description: `
-      Aplicação focada na gestão e clareza financeira. Oferece dashboards dinâmicos para lançamento de receitas/despesas, categorização automatizada, exportação de dados e análise de histórico orçamentário.
+      O DoaStock é uma solução PWA em arquitetura Serverless projetada para otimizar o inventário e a distribuição de doações em organizações sociais. Desenvolvida com backend em Python 3.12 (FastAPI) hospedado na Vercel e banco de dados PostgreSQL 16 via Supabase, a plataforma possui autenticação JWT + bcrypt, e-mails transacionais de alertas de validade via SendGrid com agendamento via Vercel Cron Jobs (diariamente às 6h), leitor de código de barras (EAN-13 / QR Code) via câmera do celular e módulo público para doadores.
+      
+      Responsabilidade no Projeto (Lucas Silva Pessoa): Desenvolvimento completo da Interface de Usuário (UI) & Design System em HTML5/CSS3 customizado.
     `,
     features: [
-      "Interface moderna e responsiva construída com React.js e CSS3",
-      "Gráficos interativos para visualização de despesas por categoria",
-      "Backend RESTful em Node.js com rotas CRUD e tratamento de erros",
-      "Armazenamento e modelagem de dados relacionais em MySQL"
+      "Arquitetura Serverless: Backend Python 3.12 + FastAPI e Banco de Dados PostgreSQL 16 via Supabase",
+      "Interface & Design System: Desenvolvimento do layout e estilização customizada (HTML5, CSS3, JavaScript ES2024)",
+      "Autenticação e Segurança: Controle de acesso seguro via JWT (PyJWT) + bcrypt",
+      "E-mails Transacionais & Cron Jobs: Alertas diários de validade às 6h automatizados via SendGrid e Vercel Cron",
+      "Leitor de Código de Barras / QR Code: Captura rápida de suprimentos diretamente pela câmera do dispositivo",
+      "Módulo Público: Canal sem autenticação para doadores consultarem necessidades urgentes em tempo real",
+      "Credenciais de Acesso (Demo): Email: vini@gmail.com | Senha: Vini1234"
     ],
-    tags: ["React.js", "Node.js", "JavaScript (ES6+)", "MySQL", "CSS3", "HTML5"],
-    demoLink: "https://github.com/lucasspessoadev",
-    repoLink: "https://github.com/lucasspessoadev",
-    filterCategory: "web"
+    tags: ["Python 3.12", "FastAPI", "PostgreSQL", "Supabase", "Vercel Serverless", "SendGrid", "JWT", "CSS3 / Design"],
+    demoLink: "https://doastock.vercel.app/",
+    repoLink: "https://github.com/gui23x/doastock-inventory",
+    filterCategory: "fullstack"
   },
   proj4: {
     id: "proj4",
-    title: "EcoStore Full Stack E-Commerce",
-    category: "Web App & E-Commerce",
-    badgeType: "Full Stack",
-    isFeatured: false,
+    title: "Instagram Clone",
+    category: "Front-End & UI Componentization",
+    badgeType: "Web App",
+    isFeatured: true,
     bannerClass: "project-banner-4",
-    artIcon: "fa-cart-shopping",
-    shortDescription: "Plataforma completa de comércio eletrônico com catálogo dinâmico de produtos, carrinho de compras, cálculo de frete e integração de checkout.",
+    image: "/img/instagram.png",
+    artIcon: "fa-camera-retro",
+    shortDescription: "Aplicação web desenvolvida em React.js e Node.js reproduzindo fielmente a interface gráfica do Instagram, com feed de posts, fotos e área de comentários.",
     description: `
-      Sistema e-commerce funcional cobrindo todo o ciclo de compra: navegação por categorias, busca com filtros dinâmicos, gerenciamento de carrinho e painel administrativo para gestão de estoque.
+      O Instagram Clone é um projeto de desenvolvimento web front-end construído com React.js e Node.js com o objetivo de recriar a experiência e a estética visual da rede social Instagram. A aplicação simula o fluxo principal da plataforma, apresentando um feed de notícias dinâmico com fotos, perfil de usuário, contador de curtidas, legendas e funcionalidade para inclusão e exibição de comentários. O projeto demonstra domínio em arquitetura baseada em componentes, gerenciamento de estado e estilização moderna.
     `,
     features: [
-      "Catálogo dinâmico renderizado com React.js e componentização modular",
-      "API backend em PHP / Node.js com persistência em MySQL",
-      "Gerenciamento de estado e sessão do usuário",
-      "Layout 100% responsivo para mobile, tablet e desktop"
+      "Feed de publicações dinâmico com suporte a fotos, avatares e nomes de usuário",
+      "Interface responsiva com alta fidelidade ao design original do Instagram",
+      "Sistema de curtidas e seção interativa de comentários para cada postagem",
+      "Componentização modular avançada com React.js para reutilização de elementos de UI",
+      "Estrutura leve e de alta performance de renderização no navegador"
     ],
-    tags: ["React.js", "PHP", "Node.js", "MySQL", "HTML5", "CSS3"],
-    demoLink: "https://github.com/lucasspessoadev",
-    repoLink: "https://github.com/lucasspessoadev",
+    tags: ["React.js", "Node.js", "JavaScript (ES6+)", "CSS3", "HTML5", "UI/UX Design"],
+    demoLink: "https://instagram-drab-omega.vercel.app/",
+    repoLink: "https://github.com/lucasspessoadev/Instagram-clone",
     filterCategory: "web"
-  },
-  proj5: {
-    id: "proj5",
-    title: "ServiceDesk TI & Chamados",
-    category: "Automação & Gestão de TI",
-    badgeType: "UI & Mobile",
-    isFeatured: false,
-    bannerClass: "project-banner-5",
-    artIcon: "fa-headset",
-    shortDescription: "Sistema interno de abertura e gerenciamento de tickets de suporte de TI com triagem automática via chatbot e painel Kanban.",
-    description: `
-      Solução desenvolvida para otimizar o atendimento de equipes de TI. Utiliza Typebot para triagem inicial do usuário e direciona chamados para um quadro Kanban de atendimento em tempo real.
-    `,
-    features: [
-      "Triagem e pré-atendimento inteligente com Typebot",
-      "Quadro Kanban interativo para acompanhamento de chamados",
-      "Notificações automáticas via automação n8n",
-      "Relatórios de tempo médio de atendimento (SLA)"
-    ],
-    tags: ["n8n", "Typebot", "JavaScript", "HTML5", "CSS3", "Kanban"],
-    demoLink: "https://github.com/lucasspessoadev",
-    repoLink: "https://github.com/lucasspessoadev",
-    filterCategory: "ui"
-  },
-  proj6: {
-    id: "proj6",
-    title: "AWS & Docker Microservices Hub",
-    category: "Cloud, DevOps & Microserviços",
-    badgeType: "DevOps",
-    isFeatured: false,
-    bannerClass: "project-banner-6",
-    artIcon: "fa-cloud-arrow-up",
-    shortDescription: "Arquitetura de microsserviços conteinerizados com Docker Compose e deploy em nuvem AWS (EC2 e S3) com versionamento via Git/GitHub.",
-    description: `
-      Projeto prático de infraestrutura e Cloud. Demonstra o empacotamento de aplicações Java e Node.js em containers Docker isolados, orquestração e hospedagem segura na nuvem AWS.
-    `,
-    features: [
-      "Criação e otimização de Dockerfiles multi-stage build",
-      "Orquestração de ambiente completo com Docker Compose",
-      "Configuração de instâncias AWS EC2 e buckets S3 para arquivos",
-      "Pipelines de versionamento e boas práticas com Git/Maven"
-    ],
-    tags: ["AWS", "Docker", "Java", "Node.js", "Git", "Maven", "Linux"],
-    demoLink: "https://github.com/lucasspessoadev",
-    repoLink: "https://github.com/lucasspessoadev",
-    filterCategory: "fullstack"
   }
 };

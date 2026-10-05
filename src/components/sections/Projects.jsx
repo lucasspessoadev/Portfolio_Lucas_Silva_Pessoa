@@ -144,6 +144,14 @@ export function Projects({ onOpenModal }) {
                   <div key={proj.id} className="carousel-item-snap">
                     <article className="project-card glass-panel">
                       <div className={`project-banner ${proj.bannerClass}`}>
+                        {proj.image && (
+                          <img
+                            src={proj.image}
+                            alt={proj.title}
+                            className="project-banner-img"
+                            loading="lazy"
+                          />
+                        )}
                         <div className="banner-overlay">
                           <div className="banner-tags">
                             {proj.isFeatured && (
@@ -154,6 +162,17 @@ export function Projects({ onOpenModal }) {
                             <span className="badge-type">{proj.badgeType}</span>
                           </div>
                           <div className="banner-actions">
+                            {proj.demoLink && (
+                              <a
+                                href={proj.demoLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="preview-btn"
+                                title="Ver Demo Online"
+                              >
+                                <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                              </a>
+                            )}
                             <button
                               className="preview-btn"
                               onClick={() => onOpenModal(proj)}
@@ -172,9 +191,11 @@ export function Projects({ onOpenModal }) {
                             </a>
                           </div>
                         </div>
-                        <div className="banner-visual-art">
-                          <i className={`fa-solid ${proj.artIcon} proj-art-icon`}></i>
-                        </div>
+                        {!proj.image && (
+                          <div className="banner-visual-art">
+                            <i className={`fa-solid ${proj.artIcon} proj-art-icon`}></i>
+                          </div>
+                        )}
                       </div>
 
                       <div className="project-body">
@@ -209,6 +230,14 @@ export function Projects({ onOpenModal }) {
             {filteredProjects.map((proj) => (
               <article key={proj.id} className="project-card glass-panel">
                 <div className={`project-banner ${proj.bannerClass}`}>
+                  {proj.image && (
+                    <img
+                      src={proj.image}
+                      alt={proj.title}
+                      className="project-banner-img"
+                      loading="lazy"
+                    />
+                  )}
                   <div className="banner-overlay">
                     <div className="banner-tags">
                       {proj.isFeatured && (
@@ -219,6 +248,17 @@ export function Projects({ onOpenModal }) {
                       <span className="badge-type">{proj.badgeType}</span>
                     </div>
                     <div className="banner-actions">
+                      {proj.demoLink && (
+                        <a
+                          href={proj.demoLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="preview-btn"
+                          title="Ver Demo Online"
+                        >
+                          <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                      )}
                       <button
                         className="preview-btn"
                         onClick={() => onOpenModal(proj)}
@@ -237,9 +277,11 @@ export function Projects({ onOpenModal }) {
                       </a>
                     </div>
                   </div>
-                  <div className="banner-visual-art">
-                    <i className={`fa-solid ${proj.artIcon} proj-art-icon`}></i>
-                  </div>
+                  {!proj.image && (
+                    <div className="banner-visual-art">
+                      <i className={`fa-solid ${proj.artIcon} proj-art-icon`}></i>
+                    </div>
+                  )}
                 </div>
 
                 <div className="project-body">

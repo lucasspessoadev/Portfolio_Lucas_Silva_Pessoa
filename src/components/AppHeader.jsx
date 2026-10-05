@@ -54,8 +54,8 @@ export function AppHeader({
       <div className="header-container">
         {/* Brand Logo */}
         <a href="#hero" className="brand-logo">
-          <span className="logo-icon"><i className="fa-solid fa-code"></i></span>
-          <span className="logo-text">Lucas<span className="highlight">Pessoa</span></span>
+          <img src="/img/logo.png" alt="Lucas Silva Pessoa Logo" className="brand-logo-img" />
+          <span className="logo-text">Lucas Silva <span className="highlight">Pessoa</span></span>
         </a>
 
         {/* Navigation Links */}
@@ -94,11 +94,10 @@ export function AppHeader({
             <button
               className={`mode-btn ${mode === 'auto' ? 'active' : ''}`}
               onClick={() => setMode('auto')}
-              title="Sincronizar com Horário Real"
+              title="Modo Automático (Horário Real)"
               aria-label="Modo Automático"
             >
               <i className="fa-solid fa-clock-rotate-left"></i>
-              <span className="btn-label">Auto</span>
             </button>
             <button
               className={`mode-btn ${mode === 'day' ? 'active' : ''}`}
@@ -107,7 +106,6 @@ export function AppHeader({
               aria-label="Modo Dia"
             >
               <i className="fa-solid fa-sun"></i>
-              <span className="btn-label">Dia</span>
             </button>
             <button
               className={`mode-btn ${mode === 'night' ? 'active' : ''}`}
@@ -116,15 +114,6 @@ export function AppHeader({
               aria-label="Modo Noite"
             >
               <i className="fa-solid fa-moon"></i>
-              <span className="btn-label">Noite</span>
-            </button>
-            <button
-              className={`mode-btn ${isPlayingSound ? 'active' : ''}`}
-              onClick={toggleSound}
-              title="Som Ambiente Dinâmico"
-              aria-label="Som ambiente"
-            >
-              <i className={`fa-solid ${isPlayingSound ? 'fa-volume-high' : 'fa-volume-xmark'}`}></i>
             </button>
           </div>
 

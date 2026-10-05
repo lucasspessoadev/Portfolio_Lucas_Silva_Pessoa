@@ -39,6 +39,15 @@ export function ProjectModal({ project, onClose }) {
           <i className="fa-solid fa-xmark"></i>
         </button>
         <div id="modal-body-content">
+          {project.image && (
+            <div className="modal-banner-image-container">
+              <img 
+                src={project.image} 
+                alt={project.title} 
+                className="modal-banner-img"
+              />
+            </div>
+          )}
           <div style={{ marginBottom: '20px' }}>
             <span className="badge-type" style={{ background: 'var(--accent-primary)', color: '#fff' }}>
               {project.category}

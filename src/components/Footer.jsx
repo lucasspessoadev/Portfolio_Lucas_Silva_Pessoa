@@ -8,8 +8,8 @@ export function Footer({ phaseName, formattedTime }) {
       <div className="footer-container">
         <div className="footer-left">
           <a href="#hero" className="brand-logo">
-            <span className="logo-icon"><i className="fa-solid fa-code"></i></span>
-            <span className="logo-text">Lucas<span className="highlight">Pessoa</span></span>
+            <img src="/img/logo.png" alt="Lucas Silva Pessoa Logo" className="brand-logo-img" />
+            <span className="logo-text">Lucas Silva <span className="highlight">Pessoa</span></span>
           </a>
           <p className="footer-copy">
             © <span id="current-year">{currentYear}</span> Lucas Silva Pessoa • Desenvolvedor Full Stack • Campo Limpo, SP.

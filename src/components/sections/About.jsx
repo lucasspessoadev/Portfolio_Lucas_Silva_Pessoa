@@ -1,7 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 export function About() {
   const [isProjectExpanded, setIsProjectExpanded] = useState(false);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const videoEl = videoRef.current;
+    if (!videoEl) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            videoEl.play().catch(() => {});
+          } else {
+            videoEl.pause();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(videoEl);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="about" className="section-padding about-section">
@@ -108,6 +130,7 @@ export function About() {
 
               <div className="video-player-wrapper">
                 <video 
+                  ref={videoRef}
                   src="/vid/YouCut_20231002_181705893.mp4" 
                   autoPlay 
                   loop 

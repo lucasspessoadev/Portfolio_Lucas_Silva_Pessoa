@@ -1,4 +1,41 @@
 export const PROJECTS_DATA = {
+  vagasats: {
+    id: "vagasats",
+    title: "vagasATS — Plataforma Tech & Otimização para ATS",
+    category: "IA Generativa, Full Stack & Chrome Extension",
+    badgeType: "Full Stack & IA",
+    isFeatured: true,
+    bannerClass: "project-banner-5",
+    image: "/img/vagasats.png",
+    artIcon: "fa-robot",
+    shortDescription: "Aplicação web e extensão para navegador que agrega vagas tech em tempo real, calcula Match Score com IA e gera currículos no método STAR otimizados para sistemas ATS.",
+    description: `
+      O vagasATS é uma plataforma web e extensão para navegador desenvolvidas para conectar profissionais de TI às melhores oportunidades do mercado e aumentar suas chances de aprovação em filtros automáticos de RH (sistemas ATS como Gupy, Workday e Greenhouse).
+
+      A aplicação agrega vagas de tecnologia em tempo real, analisa descrições de cargos extraindo requisitos técnicos e comportamentais via scraping inteligente, calcula dinamicamente o índice de compatibilidade (Match Score) e emprega IA generativa avançada (Google Gemini API e OpenAI API) para gerar currículos altamente estruturados no método STAR e cartas de apresentação sob medida. Conta ainda com exportação direta em PDF otimizado para ATS e preenchimento automático de formulários de candidatura via Chrome Extension (Manifest V3).
+    `,
+    features: [
+      "Agregação de vagas tech em tempo real com scraping inteligente e extração de requisitos técnicos",
+      "Cálculo algorítmico do índice de compatibilidade (Match Score) entre o perfil do candidato e a oportunidade",
+      "Geração de currículos sob medida no método STAR e cartas de apresentação com IA (Gemini & OpenAI)",
+      "Exportação direta em PDF estruturado e 100% legível por robôs de triagem ATS (Gupy, Workday, Greenhouse)",
+      "Extensão para navegador (Chrome Extension MV3) para autofill e preenchimento ágil de cadastros de vagas",
+      "Desenvolvido com arquitetura moderna e de alta performance: React 19, Vite 8, Tailwind CSS v4 e backend Serverless em Node.js"
+    ],
+    tags: [
+      "React 19",
+      "Vite 8",
+      "Tailwind CSS v4",
+      "Google Gemini API",
+      "Node.js (Serverless)",
+      "OpenAI API",
+      "Chrome Extension (MV3)",
+      "jsPDF"
+    ],
+    demoLink: "https://vagas-ats.vercel.app/",
+    repoLink: "https://github.com/lucasspessoadev/VagasATS",
+    filterCategory: ["fullstack", "web"]
+  },
   proj1: {
     id: "proj1",
     title: "Entrennection — Plataforma para Microempreendedores",

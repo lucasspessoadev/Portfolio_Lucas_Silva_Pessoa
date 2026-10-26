@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { ToastProvider, useToast } from './context/ToastContext';
 import { useSkyEngine } from './hooks/useSkyEngine';
 import { useSoundscape } from './hooks/useSoundscape';
 import { useScrollReveal } from './hooks/useScrollReveal';
-// import { useSlowScrollSnap } from './hooks/useSlowScrollSnap';
 import { SkyViewport } from './components/SkyViewport';
 import { AppHeader } from './components/AppHeader';
 import { Hero } from './components/sections/Hero';
@@ -16,18 +15,32 @@ import { Footer } from './components/Footer';
 import { ProjectModal } from './components/ProjectModal';
 import { ToastContainer } from './components/ToastContainer';
 
+const MemoSkyViewport = React.memo(SkyViewport);
+const MemoAbout = React.memo(About);
+const MemoSkills = React.memo(Skills);
+const MemoProjects = React.memo(Projects);
+const MemoExperience = React.memo(Experience);
+const MemoContact = React.memo(Contact);
+
 function PortfolioContent() {
   const { showToast } = useToast();
   const sky = useSkyEngine();
   const soundscape = useSoundscape(sky.theme, showToast);
   useScrollReveal();
-  // useSlowScrollSnap(); // Removido pois estava causando travamento no scroll
   const [activeModalProject, setActiveModalProject] = useState(null);
+
+  const handleOpenModal = useCallback((project) => {
+    setActiveModalProject(project);
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setActiveModalProject(null);
+  }, []);
 
   return (
     <>
       {/* CELESTIAL SKY ENVIRONMENT */}
-      <SkyViewport
+      <MemoSkyViewport
         canvasRef={sky.canvasRef}
         sunPos={sky.sunPos}
         moonPos={sky.moonPos}
@@ -55,15 +68,15 @@ function PortfolioContent() {
           formattedTime={sky.formattedTime}
         />
         <div className="section-divider-glow"></div>
-        <About />
+        <MemoAbout />
         <div className="section-divider-glow"></div>
-        <Skills />
+        <MemoSkills />
         <div className="section-divider-glow"></div>
-        <Projects onOpenModal={setActiveModalProject} />
+        <MemoProjects onOpenModal={handleOpenModal} />
         <div className="section-divider-glow"></div>
-        <Experience />
+        <MemoExperience />
         <div className="section-divider-glow"></div>
-        <Contact />
+        <MemoContact />
         <Footer
           phaseName={sky.phaseName}
           formattedTime={sky.formattedTime}
@@ -73,7 +86,7 @@ function PortfolioContent() {
       {/* PROJECT DETAILS MODAL */}
       <ProjectModal
         project={activeModalProject}
-        onClose={() => setActiveModalProject(null)}
+        onClose={handleCloseModal}
       />
 
       {/* TOAST CONTAINER */}

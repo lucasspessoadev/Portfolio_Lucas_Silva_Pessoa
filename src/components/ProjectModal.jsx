@@ -84,26 +84,32 @@ export function ProjectModal({ project, onClose }) {
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', borderTop: '1px solid var(--bg-card-border)', paddingTop: '20px' }}>
-            <a 
-              href={project.demoLink} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn btn-primary" 
-              style={{ flexGrow: 1 }}
-            >
-              <i className="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo Online
-            </a>
-            <a 
-              href={project.repoLink} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn btn-glass" 
-              style={{ flexGrow: 1 }}
-            >
-              <i className="fa-brands fa-github"></i> Ver Código no GitHub
-            </a>
-          </div>
+          {(project.demoLink || project.repoLink) && (
+            <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', borderTop: '1px solid var(--bg-card-border)', paddingTop: '20px' }}>
+              {project.demoLink && (
+                <a 
+                  href={project.demoLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn btn-primary" 
+                  style={{ flexGrow: 1 }}
+                >
+                  <i className="fa-solid fa-arrow-up-right-from-square"></i> Ver Demo Online
+                </a>
+              )}
+              {project.repoLink && (
+                <a 
+                  href={project.repoLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn btn-glass" 
+                  style={{ flexGrow: 1 }}
+                >
+                  <i className="fa-brands fa-github"></i> Ver Código no GitHub
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

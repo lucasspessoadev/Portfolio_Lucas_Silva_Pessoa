@@ -10,6 +10,9 @@ export function Projects({ onOpenModal }) {
   const projectsList = Object.values(PROJECTS_DATA);
   const filteredProjects = projectsList.filter(proj => {
     if (filter === 'all') return true;
+    if (Array.isArray(proj.filterCategory)) {
+      return proj.filterCategory.includes(filter);
+    }
     return proj.filterCategory === filter;
   });
 

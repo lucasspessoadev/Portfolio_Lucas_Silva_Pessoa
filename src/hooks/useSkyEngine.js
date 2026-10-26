@@ -16,14 +16,16 @@ export function useSkyEngine() {
   const mouseRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0, lastMove: 0 });
   const animFrameRef = useRef(null);
   const themeRef = useRef(theme);
-    const starRotationRef = useRef(0);
+  const starRotationRef = useRef(0);
+  const hasClearedRef = useRef(false);
+  const lastMinuteRef = useRef(null);
 
   themeRef.current = theme;
 
   const getEffectiveMinute = useCallback((mMode, mCustomMin) => {
     if (mMode === 'auto') {
       const now = new Date();
-      return now.getHours() * 60 + now.getMinutes() + now.getSeconds() / 60;
+      return now.getHours() * 60 + now.getMinutes();
     } else if (mMode === 'day') {
       return 720;
     } else if (mMode === 'night') {
@@ -212,8 +214,12 @@ export function useSkyEngine() {
         const isDarkSky = themeRef.current === 'night' || themeRef.current === 'sunset' || themeRef.current === 'sunrise';
 
         if (!isDarkSky && shootingStarsRef.current.length === 0) {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          if (!hasClearedRef.current) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            hasClearedRef.current = true;
+          }
         } else {
+          hasClearedRef.current = false;
           ctx.clearRect(0, 0, canvas.width, canvas.height);
 
           const w = canvas.width / dpr;
@@ -303,14 +309,18 @@ export function useSkyEngine() {
 
   useEffect(() => {
     const minute = getEffectiveMinute(mode, customMinute);
+    lastMinuteRef.current = minute;
     updateSkyState(minute, mode);
 
     const timer = setInterval(() => {
       if (mode === 'auto') {
         const m = getEffectiveMinute('auto', customMinute);
-        updateSkyState(m, 'auto');
+        if (m !== lastMinuteRef.current) {
+          lastMinuteRef.current = m;
+          updateSkyState(m, 'auto');
+        }
       }
-    }, 1000);
+    }, 4000);
 
     return () => clearInterval(timer);
   }, [mode, customMinute, getEffectiveMinute, updateSkyState]);

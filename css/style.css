@@ -1124,6 +1124,7 @@ body.theme-night .skill-bar {
 .project-banner-2 { background: linear-gradient(135deg, #10b981 0%, #064e3b 100%); }
 .project-banner-3 { background: linear-gradient(135deg, #f43f5e 0%, #831843 100%); }
 .project-banner-4 { background: linear-gradient(135deg, #8b5cf6 0%, #312e81 100%); }
+.project-banner-5 { background: linear-gradient(135deg, #6366f1 0%, #1e1b4b 100%); }
 
 .banner-overlay {
   position: absolute;

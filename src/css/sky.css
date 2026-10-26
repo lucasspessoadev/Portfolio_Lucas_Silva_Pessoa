@@ -76,7 +76,7 @@ body.theme-sunrise .stars-canvas {
   height: 100%;
   z-index: 3;
   pointer-events: none;
-  transform: translate3d(0, var(--parallax-celestial, 0px), 0);
+  transform: translate3d(0, 0, 0);
   will-change: transform;
 }
 
@@ -201,17 +201,14 @@ body.theme-sunrise .moon {
 
 .cloud-parallax-wrapper.back {
   z-index: 5;
-  transform: translate3d(0, var(--parallax-clouds-back, 0px), 0);
 }
 
 .cloud-parallax-wrapper.mid {
   z-index: 6;
-  transform: translate3d(0, var(--parallax-clouds-mid, 0px), 0);
 }
 
 .cloud-parallax-wrapper.front {
   z-index: 7;
-  transform: translate3d(0, var(--parallax-clouds-front, 0px), 0);
 }
 
 .clouds-layer {
@@ -298,9 +295,7 @@ body.theme-night .horizon-glow {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  transform: translate3d(0, calc(60px * (1 - var(--scroll-progress, 0))), 0);
-  will-change: transform;
-  transition: transform 0.1s linear;
+  transform: translate3d(0, 0, 0);
   overflow: visible;
 }
 
